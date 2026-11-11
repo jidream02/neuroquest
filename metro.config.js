@@ -18,6 +18,7 @@ config.server.enhanceMiddleware = (middleware, metroServer) => {
 };
 
 // Сервер — отдельный проект, Metro его не бандлит.
-config.resolver.blockList = [/\/server\/.*/];
+const escape = (p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+config.resolver.blockList = [new RegExp('^' + escape(__dirname + '/server/'))];
 
 module.exports = config;
