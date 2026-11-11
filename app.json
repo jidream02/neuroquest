@@ -43,6 +43,12 @@
     "backgroundColor": "#120E18",
     "experiments": {
       "typedRoutes": false
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e0330cba-2ad6-4b1b-b294-723c660680a0"
+      }
+    },
+    "owner": "jidream31s-team"
   }
 }
