@@ -1,4 +1,6 @@
-# 🐉 NeuroQuest
+<img src="assets/images/logo.png" width="96" alt="">
+
+# NeuroQuest
 
 Кроссплатформенное мобильное приложение (Android / iOS / Web) на **React Native + Expo**:
 настольная ролевая игра в духе D&D, где роль **Мастера Подземелий играет ИИ**.

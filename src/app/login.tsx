@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { KeyboardAvoidingView, Platform, StyleSheet, Text, View } from 'react-native';
+import { Image, KeyboardAvoidingView, Platform, StyleSheet, Text, View } from 'react-native';
 import { Link } from 'expo-router';
 import { useSQLiteContext } from 'expo-sqlite';
 import { AuthError, login } from '../services/auth';
@@ -57,7 +57,7 @@ export default function LoginScreen() {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <Screen edges={['top', 'bottom']}>
         <View style={styles.hero}>
-          <Text style={styles.logo}>🐉</Text>
+          <Image source={require('../../assets/images/logo.png')} style={styles.logo} accessibilityIgnoresInvertColors />
           <Text style={styles.brand}>NeuroQuest</Text>
           <Muted style={styles.tagline}>Настольная ролевая игра, где мастер — искусственный интеллект</Muted>
         </View>
@@ -105,7 +105,7 @@ export default function LoginScreen() {
 
 const styles = StyleSheet.create({
   hero: { alignItems: 'center', marginTop: space.xxl, marginBottom: space.xl },
-  logo: { fontSize: 72 },
+  logo: { width: 96, height: 96 },
   brand: { color: colors.gold, fontSize: 40, fontFamily: fonts.serif, fontWeight: '700', marginTop: space.sm },
   tagline: { textAlign: 'center', marginTop: space.sm, maxWidth: 300 },
   footer: { flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: space.lg },

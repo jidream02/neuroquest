@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
-  ActivityIndicator, FlatList, KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View,
+  ActivityIndicator, FlatList, Image, KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View,
 } from 'react-native';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
 import { useSQLiteContext } from 'expo-sqlite';
@@ -239,7 +239,12 @@ function MessageBubble({ m }: { m: repo.MessageRow }) {
   const offline = dm && parseDmMeta(m)?.model === 'offline';
   return (
     <View style={[styles.bubble, dm ? styles.dm : styles.player]}>
-      {dm ? <Text style={styles.dmLabel}>🐉 Мастер{offline ? ' · офлайн (ИИ был недоступен)' : ''}</Text> : null}
+      {dm ? (
+        <View style={styles.dmHead}>
+          <Image source={require('../../../assets/images/logo.png')} style={styles.dmIcon} />
+          <Text style={styles.dmLabel}>Мастер{offline ? ' · офлайн (ИИ был недоступен)' : ''}</Text>
+        </View>
+      ) : null}
       <Text style={[styles.text, dm && styles.dmText]}>{m.content}</Text>
     </View>
   );
@@ -260,7 +265,9 @@ const styles = StyleSheet.create({
   bubble: { padding: space.md, borderRadius: radius.lg, marginVertical: 5, maxWidth: '92%' },
   dm: { backgroundColor: colors.dmBubble, alignSelf: 'flex-start', borderWidth: 1, borderColor: colors.border, borderTopLeftRadius: 4 },
   player: { backgroundColor: colors.playerBubble, alignSelf: 'flex-end', borderTopRightRadius: 4 },
-  dmLabel: { color: colors.gold, fontSize: 12, fontWeight: '700', marginBottom: 4 },
+  dmHead: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4 },
+  dmIcon: { width: 16, height: 16 },
+  dmLabel: { color: colors.gold, fontSize: 12, fontWeight: '700' },
   text: { color: colors.text, fontSize: 15, lineHeight: 22 },
   dmText: { fontFamily: fonts.serif, fontSize: 16, lineHeight: 24 },
   rollBubble: {
